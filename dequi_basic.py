@@ -17,12 +17,15 @@ print(sum_n(5))
 
 
 # tim fibonacci
-def fibonacci(n):
+def fibonacci(n, memo={}):
+    if n in memo:
+        return memo[n]
     if n == 0:
         return 0
     if n == 1:
         return 1
-    return fibonacci(n-1) + fibonacci(n-2)
+    memo[n] = fibonacci(n-1) + fibonacci(n-2)
+    return memo[n]
 
 print(fibonacci(6))
 
@@ -50,3 +53,14 @@ def reverse_str(str):
     return reverse_str(str[1:]) + str[0]
 
 print(reverse_str('hello'))
+
+# kiểm tra palindrome
+
+def is_palindrome(str):
+    if len(str) == 1 or str =='':
+        return True
+    if str[0] != str[-1]:
+        return False
+    return is_palindrome(str[1:-1])                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+print(is_palindrome('madam'))
